@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>curso de javascript</title>
+        <meta charset="UTF-8">
+        <style>
+            #dvSlider{
+                width: 1000px;
+                height: 500px;
+            }
+            #bt{
+                color: #fff;
+                background-color: #000;
+                border: 0px;
+            }
+        </style>
+        <script>
+            var slides= new Array("s1.jpg","s2.jpg","s3.jpg","s4.jpg");
+            var tam=slides.length;
+            var satual=1;
+            var tmpslider;
+            function trocaautomatica(){
+                satual++;
+                if(satual >=tam){
+                    satual=0;
+                }
+                document.getElementById("dvSlider").style.backgroundImage="url('"+slides[satual]+"')";
+            }
+            function iniciaslider(){
+                document.getElementById("dvSlider").style.backgroundImage="url('"+slides[satual]+"')";
+                tmpslider=setInterval(trocaautomatica,3000);
+            }
+            </script>
+    </head>
+
+    <body onload="iniciaslider()">
+    <div id="dvSlider" onmouseover="parar()" onmouseout="iniciaslider()">
+         <input type="button" value="<" id="bt" onclick="troca(-1)">
+         <input type="button" value=">" id="bt" onclick="troca(1)">
+    </div>        
+   </body>
+</html>
